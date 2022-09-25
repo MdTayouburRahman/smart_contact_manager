@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        th:replace="base::layout(~{::body})"
+>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Signup</title>
+</head>
+<body>
+
+<section>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+
+            <div class="my-card mt-3 mb-3">
+
+                <!--Alert-->
+                <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert alert-primary"
+                     role="alert">
+                    <!--show alert-->
+                    <p class="text-center" th:text="${session.message.content}"></p>
+                    <!--remove alert-->
+                    <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+                </div>
+                <!--Alert end -->
+
+                <!--icon image-->
+                <div class="container text-center">
+                    <img th:src="@{/img/register.png}" style="width:100px;">
+                </div>
+
+                <h1 class="text-center">Register Here</h1>
+
+                <!--form start-->
+                <form th:action="@{/do_register}" method="post" th:object="${contactUser}">
+
+                    <!--name-->
+                    <div class="mb-3">
+                        <label for="name_filed" class="form-label">Your Name</label>
+                        <input
+                                name="name"
+                                type="text"
+                                class="form-control"
+                                id="name_filed"
+                                aria-describedby="emailHelp"
+                                placeholder="Enter your name here!"
+                                th:value="${contactUser.name}"
+                                required>
+
+                    </div>
+
+                    <!--Email-->
+                    <div class="mb-3">
+                        <label for="email_filed" class="form-label">Email address</label>
+                        <input
+                                name="email"
+                                type="email"
+                                class="form-control"
+                                id="email_filed"
+                                aria-describedby="emailHelp"
+                                placeholder="Enter your Email here!"
+                                th:value="${contactUser.email}"
+                                required
+                        >
+
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+
+                    <!--password-->
+                    <div class="mb-3">
+                        <label for="Password" class="form-label">Password</label>
+                        <input
+                                name="password"
+                                type="password"
+                                class="form-control"
+                                id="Password"
+                                placeholder="Enter your Password here!"
+                                required
+                        >
+
+
+
+
+                        </div>
+
+                    <!--checkbox-->
+                    <div class="mb-3 form-check">
+                        <input
+                                name="agreement"
+                                type="checkbox"
+                                class="form-check-input"
+                                id="Checkbox"
+                                required>
+                        <label class="form-check-label" for="Checkbox">Check me out</label>
+                    </div>
+
+                    <!--about-->
+                    <div class="form-group">
+
+           <textarea
+                   name="about"
+                   placeholder="Enter something yourself!!"
+                   rows="5"
+                   class="form-control"
+                   th:value="${contactUser.about}">
+
+           </textarea>
+                    </div>
+
+                    <!--button-->
+                    <div class="container text-center d-grid gap-2 mt-2">
+
+                        <button type="submit" class="btn btn-success ">Submit</button>
+
+                        <button type="reset" class="btn btn-warning">Reset</button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

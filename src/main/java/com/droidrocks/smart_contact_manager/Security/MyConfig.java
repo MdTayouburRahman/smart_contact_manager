@@ -1,5 +1,6 @@
 package com.droidrocks.smart_contact_manager.Security;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -41,33 +42,34 @@ public class MyConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http.authorizeRequests()
-                .antMatchers("/admin/**")
-                .hasRole("ADMIN")
-                .antMatchers("/user/**")
-                .hasRole("USER")
-                .antMatchers("/**")
+        String[] resources = new String[]{"/Img/*.png","/Img/*.jpg","/JS/*.js","/CSS/*.css"};
+        String[] permittedPages = new String[]{"/home","/about","/signup"};
+        http.csrf().disable()
+                .authorizeRequests()
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .antMatchers(permittedPages)
                 .permitAll()
+                .antMatchers(resources).permitAll()
+                .antMatchers("/user/*.html")
+                .hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin(form -> form
                         .loginPage("/signin")
+                        .loginProcessingUrl("/signin")
                         .defaultSuccessUrl("/user/index", true)
                         .permitAll()
                 )
-                .logout(logout-> logout.logoutUrl("/logout"));
-
-        http.csrf().disable();
-
-
-   /*     http.authorizeRequests()
-                .antMatchers("/admin/**")
+                .logout(logout-> logout.logoutUrl("/user/logout"));
+      /*  String[] resources = new String[]{"/Img/*.png","/Img/*.jpg","/JS/*.js","/CSS/*.css"};
+        http.authorizeRequests()
+                .antMatchers("/admin/*.html")
                 .hasRole("ADMIN")
-                .antMatchers("/user/**")
+                .antMatchers("/user/*.html")
                 .hasRole("USER")
                 .antMatchers("/**").permitAll()
+                .antMatchers(resources).permitAll()
                 .and()
                 .formLogin(form -> form
                         .loginPage("/signin")

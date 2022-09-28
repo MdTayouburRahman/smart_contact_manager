@@ -2,6 +2,7 @@ package com.droidrocks.smart_contact_manager.Service;
 
 import com.droidrocks.smart_contact_manager.Entitys.ContactUser;
 import com.droidrocks.smart_contact_manager.Helper.Message;
+import com.droidrocks.smart_contact_manager.Repository.ContactRepository;
 import com.droidrocks.smart_contact_manager.Repository.ContactUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,9 +17,10 @@ public class ContactUserService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
     @Autowired
     private ContactUserRepository userRepository;
+    @Autowired
+    private ContactRepository contactRepository;
 
 
     /**
@@ -50,5 +52,10 @@ public class ContactUserService {
         session.setAttribute("message",
                 new Message("Registration Successful",
                         "alert-success"));
+    }
+
+    public ContactUser getUserData(String username) {
+        ContactUser contactUser = userRepository.findUserByEmail(username);
+        return contactUser;
     }
 }

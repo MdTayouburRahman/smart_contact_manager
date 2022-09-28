@@ -16,18 +16,14 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
-    private ContactUserService contactUserService;
 
+
+    private ContactUserService contactUserService;
     @Autowired
     public HomeController(ContactUserService contactUserService) {
         this.contactUserService = contactUserService;
     }
 
-   /* @RequestMapping("/error")
-    public String Error(Model model){
-        model.addAttribute("title", DefConfig.PAGE404_PAGE_TITLE);
-        return "404page";
-    }*/
 
     @RequestMapping("/")
     public String home2(Model model) {
@@ -91,17 +87,6 @@ public class HomeController {
         }
     }
 
-
-    @RequestMapping("/user/index")
-    public String indexPage(Model model) {
-        model.addAttribute("title", DefConfig.INDEX_PAGE_TITLE);
-        return "index";
-    }
-    @RequestMapping("/user/newpost")
-    public String newPostPage(Model model) {
-        model.addAttribute("title", DefConfig.INDEX_PAGE_TITLE);
-        return "newpost";
-    }
 
 
 }

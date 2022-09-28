@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:fragment="layout(content)"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/CSS/style.css}" />
+    <link rel="stylesheet" th:href="@{/CSS/user_style.css}" />
+    <script th:src="@{/JS/script.js}"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!--Header start -->
+    <nav
+      class="navbar fixed-top navbar-expand-lg navbar-dark"
+      style="background-color: #388e3c"
+    >
+      <a class="navbar-brand" th:href="home"> Smart Content Manager </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav mr-auto text-uppercase">
+          <!--       <li class="nav-item">
+                <a class="nav-link " th:href="index">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " th:href="my_account">Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " th:href="logout">Logout</a>
+            </li>-->
+
+          <!-- <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Dropdown
+                 </a>
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" href="#">Action</a>
+                     <a class="dropdown-item" href="#">Another action</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#">Something else here</a>
+                 </div>
+             </li>-->
+        </ul>
+      </div>
+    </nav>
+    <!--Header end -->
+
+    <div class="mainclass">
+      <!--sidebar -->
+      <div class="sidebar mt-2">
+        <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+        <a href="#" th:href="index" class="item"
+          ><i class="fa-solid fa-house-user"></i> Dashboard</a
+        >
+        <a href="#" class="item"
+          ><i class="fa-solid fa-address-book"></i> View Contact</a
+        >
+        <a href="#" th:href="add_contact" class="item"
+          ><i class="fa-solid fa-id-card"></i> Add new Contact</a
+        >
+        <a href="#" th:href="my_account" class="item"
+          ><i class="fa-solid fa-user"></i> Your Profile</a
+        >
+        <a href="#" class="item"
+          ><i class="fa-sharp fa-solid fa-gear"></i> Settings</a
+        >
+        <a href="#" th:href="logout" class="item"
+          ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+        >
+        <div class="divider"></div>
+      </div>
+      <!--end sidebar-->
+
+      <!--all the content will replace the content-->
+      <div class="mycontent mt-5">
+        <i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+        <div th:replace="${content}"></div>
+      </div>
+    </div>
+
+    <!--bootstrap script-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

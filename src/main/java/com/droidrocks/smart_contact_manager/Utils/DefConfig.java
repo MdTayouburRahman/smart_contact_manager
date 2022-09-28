@@ -9,6 +9,9 @@ public class DefConfig {
     public static final String LOGIN_PAGE_TITLE = "Login- Smart Contact Manager";
     public static final String SIGNUP_PAGE_TITLE = "Signup- Smart Contact Manager";
     public static final String ABOUT_PAGE_TITLE = "About- Smart Contact Manager";
+
     public static final Object PAGE404_PAGE_TITLE = "Page Not Found- Smart Contact Manager";
-    public static final Object INDEX_PAGE_TITLE = "Dashboard- Smart Contact Manager";;
+    public static final Object INDEX_PAGE_TITLE = "Dashboard- Smart Contact Manager";
+    public static final Object MY_ACCOUNT_PAGE_TITLE = "My Account- Smart Contact Manager";
+    public static final Object ADD_CONTACT_PAGE_TITLE = "Add Contact- Smart Contact Manager";
 }

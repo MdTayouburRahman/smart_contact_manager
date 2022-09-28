@@ -95,17 +95,4 @@ public class Contact {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "contactId=" + contactId +
-                ", name='" + name + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", work='" + work + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", image='" + image + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }

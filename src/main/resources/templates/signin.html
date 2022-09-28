@@ -13,9 +13,12 @@
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
-
-
                 <div id="login-box" class="col-md-12">
+                    <!--icon image-->
+                    <div class="container text-center mt-3 mb-3">
+                        <img th:src="@{/Img/register.png}" style="width:100px;">
+                    </div>
+
                     <form id="login-form" class="form" th:action="@{/signin}" method="post">
                         <h3 class="text-center text-info">Login</h3>
                         <div th:if="${param.error}" class="alert alert-danger"> Invalid username !!</div>
@@ -35,7 +38,7 @@
                             >
                         </div>
                         <div class="form-group mt-3">
-                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
                         </div>
 
                     </form>
